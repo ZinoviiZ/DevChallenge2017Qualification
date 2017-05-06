@@ -20,7 +20,7 @@ public class Parser {
             content = content.replace(String.valueOf((char) 160), String.valueOf((char) 32));
             String[] contentMas = content.split("\n");
             String cityCouncil = contentMas[1];
-            String session = getSession(contentMas[2]);
+            String sessionName = getSessionName(contentMas[2]);
             String assembly = getAssembly(contentMas[2]);
             String sessionDate = getSessionDate(contentMas[2]).trim();
             String agenda = getAgenda(content).replaceAll("\n", "");
@@ -33,7 +33,7 @@ public class Parser {
             Integer countPass = countDelegatePass(votes);
             Integer countAbsent = countDelegateAbsent(votes);
             VotingResult votingResult = getVotingResult(content);
-            return new PdfData(cityCouncil, session, assembly, sessionDate, agenda, votingNumber, votingGoal, votes,
+            return new PdfData(cityCouncil, sessionName, assembly, sessionDate, agenda, votingNumber, votingGoal, votes,
                     countFor, countAgainst, countAbstain, countPass, countAbsent, votingResult);
         } catch (RuntimeException ex) {
             logger.error("error: ", ex);
@@ -41,39 +41,47 @@ public class Parser {
         }
     }
 
-    private String getSession(String line) {
-        String stringFrom = "сесія";
-        return line.substring(0, line.indexOf(stringFrom) + stringFrom.length());
+    private String getSessionName(String line) {
+        int startIndex = line.indexOf("сесія");
+        if (startIndex < 0) {
+            startIndex = line.indexOf("сесії");
+        }
+        assert startIndex >= 0;
+        return line.substring(0, startIndex + 5).trim();
     }
 
     private String getAssembly(String line) {
         String stringFrom = "сесія";
-        int indexFrom = line.indexOf(stringFrom) + stringFrom.length();
-        return line.substring(indexFrom, line.indexOf("від") - 1).trim();
+        int startIndex = line.indexOf("сесія");
+        if (startIndex < 0) {
+            startIndex = line.indexOf("сесії");
+        }
+        startIndex += 5;
+        return line.substring(startIndex, line.indexOf("від") - 1).trim();
     }
 
     private String getSessionDate(String line) {
         String stringFrom = "від";
         int indexFrom = line.indexOf(stringFrom) + stringFrom.length();
-        return line.substring(indexFrom, line.length());
+        return line.substring(indexFrom, line.length()).trim();
     }
 
     private String getAgenda(String content) {
         String stringFrom = "Результат поіменного голосування:\n";
         int indexFrom = content.indexOf(stringFrom) + stringFrom.length();
         int indexTo = content.indexOf("\n №:");
-        return content.substring(indexFrom, indexTo);
+        return content.substring(indexFrom, indexTo).trim();
     }
 
     private String getVotingNumber(String content) {
         int index = content.indexOf("\n №:") + 5;
-        return content.substring(index, content.indexOf(" ", index));
+        return content.substring(index, content.indexOf(" ", index)).trim();
     }
 
     private String getVotingGoal(String votingNumber, String content) {
         String stringFrom = "\n №: " + votingNumber;
         int index = content.indexOf(stringFrom) + stringFrom.length() + 1;
-        return content.substring(index, content.indexOf("\n", index));
+        return content.substring(index, content.indexOf("\n", index)).trim();
     }
 
     private List<PdfData.Vote> getVotes(String content) {
