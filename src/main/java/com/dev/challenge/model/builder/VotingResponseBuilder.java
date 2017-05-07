@@ -3,7 +3,6 @@ package com.dev.challenge.model.builder;
 import com.dev.challenge.exception.DelegateNofFoundException;
 import com.dev.challenge.exception.SessionNotFoundsException;
 import com.dev.challenge.exception.VotingNotFoundException;
-import com.dev.challenge.model.common.LinkBuilder;
 import com.dev.challenge.model.entity.Delegate;
 import com.dev.challenge.model.entity.Session;
 import com.dev.challenge.model.entity.Voting;
@@ -15,9 +14,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 
-/**
- * Created by zinoviyzubko on 07.05.17.
- */
 @Component
 public class VotingResponseBuilder {
 

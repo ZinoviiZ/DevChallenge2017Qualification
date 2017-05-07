@@ -3,7 +3,6 @@ package com.dev.challenge.model.builder;
 import com.dev.challenge.exception.DelegateNofFoundException;
 import com.dev.challenge.exception.SessionNotFoundsException;
 import com.dev.challenge.exception.VotingNotFoundException;
-import com.dev.challenge.model.common.LinkBuilder;
 import com.dev.challenge.model.entity.Delegate;
 import com.dev.challenge.model.response.DelegateResponse;
 import com.dev.challenge.service.DelegateService;
@@ -14,9 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * Created by zinoviyzubko on 07.05.17.
- */
 @Component
 public class DelegateResponseBuilder {
 

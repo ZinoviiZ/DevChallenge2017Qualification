@@ -3,7 +3,7 @@ package com.dev.challenge.service;
 import com.dev.challenge.exception.DelegateNofFoundException;
 import com.dev.challenge.exception.SessionNotFoundsException;
 import com.dev.challenge.exception.VotingNotFoundException;
-import com.dev.challenge.model.common.LinkBuilder;
+import com.dev.challenge.model.builder.LinkBuilder;
 import com.dev.challenge.model.entity.Session;
 import com.dev.challenge.model.response.MessageResponse;
 import com.dev.challenge.model.response.SessionResponse;
@@ -22,12 +22,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Matchers.any;
 
-/**
- * Created by zinoviyzubko on 07.05.17.
- */
-
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.DEFINED_PORT)
+@SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class SessionServiceTest {
 
     @Autowired private SessionRepository sessionRepository;

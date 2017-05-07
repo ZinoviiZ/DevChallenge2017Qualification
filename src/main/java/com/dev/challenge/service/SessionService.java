@@ -4,7 +4,6 @@ import com.dev.challenge.exception.DelegateNofFoundException;
 import com.dev.challenge.exception.SessionNotFoundsException;
 import com.dev.challenge.exception.VotingNotFoundException;
 import com.dev.challenge.model.builder.SessionResponseBuilder;
-import com.dev.challenge.model.common.LinkBuilder;
 import com.dev.challenge.model.entity.Session;
 import com.dev.challenge.model.response.MessageResponse;
 import com.dev.challenge.model.response.SessionResponse;

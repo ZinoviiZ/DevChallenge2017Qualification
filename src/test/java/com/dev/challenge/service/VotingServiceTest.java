@@ -3,7 +3,7 @@ package com.dev.challenge.service;
 import com.dev.challenge.exception.DelegateNofFoundException;
 import com.dev.challenge.exception.SessionNotFoundsException;
 import com.dev.challenge.exception.VotingNotFoundException;
-import com.dev.challenge.model.common.LinkBuilder;
+import com.dev.challenge.model.builder.LinkBuilder;
 import com.dev.challenge.model.entity.Voting;
 import com.dev.challenge.model.enums.VotingResult;
 import com.dev.challenge.model.response.AllVotingResponse;
@@ -27,11 +27,8 @@ import java.util.List;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Matchers.any;
 
-/**
- * Created by zinoviyzubko on 07.05.17.
- */
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.DEFINED_PORT)
+@SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class VotingServiceTest {
 
     @Autowired private VotingRepository votingRepository;
@@ -64,8 +61,8 @@ public class VotingServiceTest {
     public void testGetVotingPackage() throws SessionNotFoundsException, DelegateNofFoundException, VotingNotFoundException {
         MessageResponse<AllVotingResponse> response;
         testVotingNotFoundException(-1, 1);
-        testVotingNotFoundException(0, 1);
-        testVotingNotFoundException(1, 1);
+        testVotingNotFoundException(0, -1);
+        testVotingNotFoundException(1, 0);
         testVotingNotFoundException(1, -1);
         int index = 2;
         int packageSize = 3;
@@ -75,7 +72,7 @@ public class VotingServiceTest {
             votings1.add(votings.get(i));
         }
         response = votingService.getVotingPackage(index, packageSize);
-        Assert.assertEquals(response.getData().getLinks().size(), votings1);
+        Assert.assertEquals(response.getData().getLinks().size(), votings1.size());
     }
 
     private void testVotingNotFoundException(int index, int packageSize) {
@@ -93,8 +90,7 @@ public class VotingServiceTest {
 
         Voting voting = votingRepository.findOne(votingId);
         MessageResponse<VotingResponse> response = votingService.getVotingById(votingId);
-        Assert.assertEquals(response.getData().getId(), voting.getId());
-        Assert.assertEquals(response.getData().getResult(), voting.getResult());
+        Assert.assertEquals(response.getData().getResult(), voting.getResult().getValue());
         Assert.assertEquals(response.getData().getVotingGoal(), voting.getGoal());
     }
 
@@ -103,11 +99,12 @@ public class VotingServiceTest {
 
         String votingGoal = "voting_test_goal";
         VotingResult result = VotingResult.Denied;
-        Voting voting = votingService.saveVoting(votingGoal, new ArrayList<PdfData.Vote>(), result);
+        Voting voting = votingService.saveVoting(votingGoal, new ArrayList<>(), result);
         Voting voting1 = votingRepository.findOne(voting.getId());
         Assert.assertEquals(voting.getId(), voting1.getId());
         Assert.assertEquals(voting.getGoal(), voting1.getGoal());
         Assert.assertEquals(voting.getResult(), voting1.getResult());
+        votingRepository.delete(voting.getId());
     }
 
 }

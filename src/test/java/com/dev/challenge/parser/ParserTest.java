@@ -17,7 +17,7 @@ import java.io.File;
 import java.io.IOException;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.DEFINED_PORT)
+@SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class ParserTest {
 
     private final String testPdfFilePath = "/pdf/test/test.pdf";

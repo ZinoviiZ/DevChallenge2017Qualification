@@ -1,4 +1,4 @@
-package com.dev.challenge.model.common;
+package com.dev.challenge.model.builder;
 
 import com.dev.challenge.exception.DelegateNofFoundException;
 import com.dev.challenge.exception.SessionNotFoundsException;

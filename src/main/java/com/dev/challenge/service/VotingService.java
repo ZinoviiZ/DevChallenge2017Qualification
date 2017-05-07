@@ -75,6 +75,7 @@ public class VotingService extends ParentService {
         }
         voting.setResult(votingResult);
         delegateService.saveDelegates(delegates);
+        votingRepository.save(voting);
         return voting;
     }
 }

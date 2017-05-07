@@ -35,7 +35,7 @@ public class ParseWorker implements Callable<List<PdfData>> {
             PDFTextStripper textStripper = new PDFTextStripper();
             for (PDDocument document : splitter.split(pdDocument)) {
                 content = content + textStripper.getText(document);
-                if (!content.contains("Рішення: "))
+                if (isOnePageContaineFullVoting(content))
                     continue;
                 PdfData data = parser.parseContent(content);
                 dataList.add(data);
@@ -50,5 +50,10 @@ public class ParseWorker implements Callable<List<PdfData>> {
             logger.error("errorCode - " + Error.OPEN_PDF_ERROR.getCode() + ": " + Error.OPEN_PDF_ERROR.getErrorMessage() , ex);
         }
         return dataList;
+    }
+
+    private boolean isOnePageContaineFullVoting(String content) {
+        if (content.contains("Рішення: ")) return true;
+        return false;
     }
 }

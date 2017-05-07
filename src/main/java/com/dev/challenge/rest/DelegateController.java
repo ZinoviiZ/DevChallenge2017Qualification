@@ -25,7 +25,7 @@ public class DelegateController {
 
     @Autowired private DelegateService delegateService;
 
-    @ApiOperation(value = "getting full information about delegate by id", produces = "application/json")
+    @ApiOperation(value = "getting full information about delegate by id, and list of other delegates with influence on current delegate. Max influence is 1.0, and others are ration to max", produces = "application/json")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "Delegate's id",
                     dataType = "String", paramType = "path")})

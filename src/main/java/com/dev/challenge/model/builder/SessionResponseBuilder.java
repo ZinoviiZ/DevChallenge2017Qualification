@@ -3,7 +3,6 @@ package com.dev.challenge.model.builder;
 import com.dev.challenge.exception.DelegateNofFoundException;
 import com.dev.challenge.exception.SessionNotFoundsException;
 import com.dev.challenge.exception.VotingNotFoundException;
-import com.dev.challenge.model.common.LinkBuilder;
 import com.dev.challenge.model.entity.Session;
 import com.dev.challenge.model.response.SessionResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +10,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 
-/**
- * Created by zinoviyzubko on 07.05.17.
- */
 @Component
 public class SessionResponseBuilder {
 
