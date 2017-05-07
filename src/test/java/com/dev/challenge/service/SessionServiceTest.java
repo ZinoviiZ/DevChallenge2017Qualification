@@ -107,7 +107,7 @@ public class SessionServiceTest {
         String testAssembly = "Test_Assembly";
         String testSessionName = "Test_Session_Name";
         String testSessionDate = "Test_Session_Date";
-        Session session = sessionService.saveSassion(testCityCouncil, testAssembly, testSessionName, testSessionDate);
+        Session session = sessionService.saveSession(testCityCouncil, testAssembly, testSessionName, testSessionDate);
         session = sessionRepository.findOne(session.getId());
         Assert.assertEquals(session.getCityCouncil(), testCityCouncil);
         Assert.assertEquals(session.getAssembly(), testAssembly);

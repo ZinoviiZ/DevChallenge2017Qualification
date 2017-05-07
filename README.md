@@ -1,5 +1,5 @@
 #Run application
-Application is deployed on Heroku
+Application is deployed on Heroku (wait until the heroku server starts)
 ```cmd
 https://dev-challenge-qualification.herokuapp.com/swagger-ui.html
 ```

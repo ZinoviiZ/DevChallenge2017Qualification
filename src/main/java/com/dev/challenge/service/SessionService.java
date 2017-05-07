@@ -43,12 +43,12 @@ public class SessionService  extends ParentService {
 
         Session session = sessionRepository.findByCityCouncilAndAssemblyAndSessionName(cityCouncil, assembly, sessionName);
         if (session == null) {
-            session = saveSassion(cityCouncil, assembly, sessionName, sessionDate);
+            session = saveSession(cityCouncil, assembly, sessionName, sessionDate);
         }
         return session;
     }
 
-    public Session saveSassion(String cityCouncil, String assembly, String sessionName, String sessionDate) {
+    public Session saveSession(String cityCouncil, String assembly, String sessionName, String sessionDate) {
 
         Session session = new Session();
         session.setId(generator.generateId());
