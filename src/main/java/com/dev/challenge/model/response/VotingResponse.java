@@ -9,6 +9,7 @@ import java.util.List;
 public class VotingResponse extends ResponseData {
 
     private List<Vote> votes;
+    private String votingGoal;
     private String result;
 
     @Data

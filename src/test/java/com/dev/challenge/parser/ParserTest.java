@@ -25,7 +25,7 @@ public class ParserTest {
     private Parser parser;
 
     @Test
-    public void parseContentTest() throws IOException, PdfParseException {
+    public void testParseContent() throws IOException, PdfParseException {
 
         File file = new ClassPathResource(testPdfFilePath).getFile();
         PDDocument pdDocument = PDDocument.load(file);

@@ -5,10 +5,7 @@ import com.dev.challenge.exception.SessionNotFoundsException;
 import com.dev.challenge.exception.VotingNotFoundException;
 import com.dev.challenge.model.response.MessageResponse;
 import com.dev.challenge.service.VotingService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,9 +21,15 @@ public class VotingController {
     @Autowired private VotingService votingService;
 
     @ApiOperation(value = "getting references on all voting", produces = "application/json")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "index", value = "Package index. Index start with 0",
+                    dataType = "integer", paramType = "query", required = true),
+            @ApiImplicitParam(name = "packageSize", value = "Package size",
+                    dataType = "integer", paramType = "query", required = true)})
     @RequestMapping(value = "/voting", method = GET)
-    public MessageResponse getVoting() throws VotingNotFoundException, DelegateNofFoundException, SessionNotFoundsException {
-        return votingService.getAllVoting();
+    public MessageResponse getVoting(@RequestParam(required = true) int index,
+                                     @RequestParam(required = true) int packageSize) throws VotingNotFoundException, DelegateNofFoundException, SessionNotFoundsException {
+        return votingService.getVotingPackage(index, packageSize);
     }
 
     @ApiImplicitParams({

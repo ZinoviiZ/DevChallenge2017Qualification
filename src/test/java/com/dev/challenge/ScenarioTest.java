@@ -20,7 +20,7 @@ public class ScenarioTest {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void fullScenario() throws IOException {
+    public void testFullScenarios() throws IOException {
 
         MessageResponse<SessionsResponse> sessionsResponse = restTemplate.getForObject("/rest/sessions", MessageResponse.class);
         Assert.assertEquals(sessionsResponse.getStatus().getStatusCode(), StatusResponse.SUCCESS.getValue());

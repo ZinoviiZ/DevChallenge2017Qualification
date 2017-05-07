@@ -1,5 +1,6 @@
 package com.dev.challenge.service;
 
+import com.dev.challenge.model.common.LinkBuilder;
 import com.dev.challenge.model.response.MessageResponse;
 import com.dev.challenge.parser.ParseWorker;
 import com.dev.challenge.parser.PdfData;
@@ -17,7 +18,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 @Component
-public class PdfService {
+public class PdfService extends ParentService {
 
     @Autowired private DataBaseSaver dataBaseSaver;
 

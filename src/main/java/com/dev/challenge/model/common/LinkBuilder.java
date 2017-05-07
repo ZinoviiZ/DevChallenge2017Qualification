@@ -7,21 +7,23 @@ import com.dev.challenge.rest.DelegateController;
 import com.dev.challenge.rest.SessionController;
 import com.dev.challenge.rest.VotingController;
 import org.springframework.hateoas.Link;
+import org.springframework.stereotype.Component;
 
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
-public class RestUrl {
+@Component
+public class LinkBuilder {
 
-    public static Link buildGetDelegateLink(String id, String delegateName) throws DelegateNofFoundException, VotingNotFoundException, SessionNotFoundsException {
+    public Link buildGetDelegateLink(String id, String delegateName) throws DelegateNofFoundException, VotingNotFoundException, SessionNotFoundsException {
         return linkTo(methodOn(DelegateController.class).getDelegateById(id)).withRel(delegateName);
     }
 
-    public static Link buildGetVotingLink(String id) throws DelegateNofFoundException, VotingNotFoundException, SessionNotFoundsException {
+    public Link buildGetVotingLink(String id) throws DelegateNofFoundException, VotingNotFoundException, SessionNotFoundsException {
         return linkTo(methodOn(VotingController.class).getVoting(id)).withSelfRel();
     }
 
-    public static Link buildGetSessionLink(String id, String sessionName) throws SessionNotFoundsException, DelegateNofFoundException, VotingNotFoundException {
+    public Link buildGetSessionLink(String id, String sessionName) throws SessionNotFoundsException, DelegateNofFoundException, VotingNotFoundException {
         return linkTo(methodOn(SessionController.class).getSessionById(id)).withRel(sessionName);
     }
 
