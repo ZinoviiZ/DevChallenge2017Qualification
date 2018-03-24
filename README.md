@@ -1,4 +1,7 @@
-#Run application
+# DevChallengeQualification
+Application for DevChallenge2017 qualification round, backend nomination. </br>
+
+# Run application
 Application is deployed on Heroku (wait until the heroku server starts)
 ```cmd
 https://dev-challenge-qualification.herokuapp.com/swagger-ui.html
@@ -11,11 +14,11 @@ docker build -t [image-name] .
 ```cmd
 docker run -it --name [container-name] -p 8080:8080 [image-name]
 ```
-#Information
+# Information
 For solving this task I've chosen Spring Framework and Swagger Framework(documentation).
 My application has RestFull architecture includes HATEOAS.
 For data storing I've chosen mongoDB database because I think for saving documents in DB the best decision use NoSql document-oriented database.
-#Documentation
+# Documentation
 See rest documentation - http://localhost:8080/swagger-ui.html
 ###Config
 SpringApp - Running Spring Boot application.
