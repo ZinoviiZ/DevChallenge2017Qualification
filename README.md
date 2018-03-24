@@ -4,6 +4,9 @@ Application for DevChallenge2017 qualification round, backend nomination. </br>
 With that project I've passed qualification round in backend nomination and have been chosen Middle-Senior category.</br>
 https://devchallenge.it/
 
+## DevChallenge
+All-Ukrainian software development championship among junior, middle and senior programmers. The championship takes place in 3 stages: Qualification, Semifinal and offline Finals in Kyiv. Participants compete in eleven nominations in three directions: Web, Mobile, Game. Each nomination has 2 categories: Pro (Senior, Middle-to-Senior) and Standard (Middle, Junior-to-Middle). At the final, the tasks were from the partner Amazon.
+
 # Run application
 Application is deployed on Heroku (wait until the heroku server starts)
 ```cmd
