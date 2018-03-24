@@ -1,5 +1,8 @@
 # DevChallengeQualification
+
 Application for DevChallenge2017 qualification round, backend nomination. </br>
+With that project I've passed qualification round in backend nomination and have been chosen Middle-Senior category.</br>
+https://devchallenge.it/
 
 # Run application
 Application is deployed on Heroku (wait until the heroku server starts)
