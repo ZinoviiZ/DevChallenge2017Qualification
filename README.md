@@ -7,8 +7,18 @@ https://devchallenge.it/
 ## DevChallenge
 All-Ukrainian software development championship among junior, middle and senior programmers. The championship takes place in 3 stages: Qualification, Semifinal and offline Finals in Kyiv. Participants compete in eleven nominations in three directions: Web, Mobile, Game. Each nomination has 2 categories: Pro (Senior, Middle-to-Senior) and Standard (Middle, Junior-to-Middle). At the final, the tasks were from the partner Amazon.
 
-# Run application
-Application is deployed on Heroku (wait until the heroku server starts)
+# Task
+**Create a WebAPI is based on the bunch of pdf files**
+Here's the dataset about deputy votings in inefficient formats for analyze data (pdf files). The full list of the by URL: https://drive.google.com/file/d/0B5_FQ3NcRoptYS1jX1pXcG4wcUE/view . </br> You should create an application which makes parsing and converting to appropriate store's format.
+Besides task above, you should implement:
+1) Make an open API for getting votings' results
+2) An additional advantage is to implement search between the limited list of deputies (37) "zone of influence" - input parameter is deputy and you should analyze who usually voting similarity. </br>
+Make attention, list of the deputies can be changed because some deputies are able to absent and they are replaced by another.
+The system should easily handle the appearance of new files.
+
+# Solution
+## Run existing application
+One version of application is deployed on Heroku (wait until the heroku server starts)
 ```cmd
 https://dev-challenge-qualification.herokuapp.com/swagger-ui.html
 ```
